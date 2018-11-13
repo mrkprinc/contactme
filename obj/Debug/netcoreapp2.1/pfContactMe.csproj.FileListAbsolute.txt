@@ -1,0 +1,14 @@
+C:\Users\mrkpr\Desktop\pfContactMe\bin\Debug\netcoreapp2.1\pfContactMe.deps.json
+C:\Users\mrkpr\Desktop\pfContactMe\bin\Debug\netcoreapp2.1\pfContactMe.runtimeconfig.json
+C:\Users\mrkpr\Desktop\pfContactMe\bin\Debug\netcoreapp2.1\pfContactMe.runtimeconfig.dev.json
+C:\Users\mrkpr\Desktop\pfContactMe\bin\Debug\netcoreapp2.1\pfContactMe.dll
+C:\Users\mrkpr\Desktop\pfContactMe\bin\Debug\netcoreapp2.1\pfContactMe.pdb
+C:\Users\mrkpr\Desktop\pfContactMe\obj\Debug\netcoreapp2.1\pfContactMe.csprojAssemblyReference.cache
+C:\Users\mrkpr\Desktop\pfContactMe\obj\Debug\netcoreapp2.1\pfContactMe.csproj.CoreCompileInputs.cache
+C:\Users\mrkpr\Desktop\pfContactMe\obj\Debug\netcoreapp2.1\pfContactMe.RazorAssemblyInfo.cache
+C:\Users\mrkpr\Desktop\pfContactMe\obj\Debug\netcoreapp2.1\pfContactMe.RazorAssemblyInfo.cs
+C:\Users\mrkpr\Desktop\pfContactMe\obj\Debug\netcoreapp2.1\pfContactMe.AssemblyInfoInputs.cache
+C:\Users\mrkpr\Desktop\pfContactMe\obj\Debug\netcoreapp2.1\pfContactMe.AssemblyInfo.cs
+C:\Users\mrkpr\Desktop\pfContactMe\obj\Debug\netcoreapp2.1\pfContactMe.RazorTargetAssemblyInfo.cache
+C:\Users\mrkpr\Desktop\pfContactMe\obj\Debug\netcoreapp2.1\pfContactMe.dll
+C:\Users\mrkpr\Desktop\pfContactMe\obj\Debug\netcoreapp2.1\pfContactMe.pdb
