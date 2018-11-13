@@ -1,6 +1,6 @@
 using System;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
+using System.Collections;
 using pfContactMe.Models;
 using MimeKit;
 using MailKit.Net.Smtp;
@@ -32,9 +32,9 @@ namespace pfContactMe.Controllers {
   }
 
   public class EmailService : IEmailService {
-    private IDictionary<string, string> _emailConfig;
+    private IDictionary _emailConfig;
     public EmailService() {
-      _emailConfig = (IDictionary<string, string>)Environment.GetEnvironmentVariables();
+      _emailConfig = (IDictionary)Environment.GetEnvironmentVariables();
     }
 
     public void Send(EmailMessage emailMessage) {
