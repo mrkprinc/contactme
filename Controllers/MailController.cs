@@ -53,7 +53,7 @@ namespace pfContactMe.Controllers {
 
       using(var emailClient = new SmtpClient())
       {
-        emailClient.Connect(_emailConfig.SmtpServer, _emailConfig.SmtpPort, true);
+        emailClient.Connect(Environment.GetEnvironmentVariable("SMTP_SERVER"), _emailConfig.SmtpPort, true);
         emailClient.AuthenticationMechanisms.Remove("XOAUTH2");
         emailClient.Authenticate(_emailConfig.SmtpUser, _emailConfig.SmtpPass);
         emailClient.Send(msg);
