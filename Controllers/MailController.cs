@@ -34,8 +34,8 @@ namespace pfContactMe.Controllers {
   }
 
   public class EmailService : IEmailService {
-    private readonly EmailConfig _emailConfig;
-    public EmailService(EmailConfig emailConfig) {
+    private readonly IEmailConfig _emailConfig;
+    public EmailService(IEmailConfig emailConfig) {
       _emailConfig = emailConfig;
     }
 
