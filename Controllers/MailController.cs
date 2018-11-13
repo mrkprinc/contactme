@@ -34,8 +34,8 @@ namespace pfContactMe.Controllers {
   }
 
   public class EmailService : IEmailService {
-    private readonly IEmailConfig _emailConfig;
-    public EmailService(IEmailConfig emailConfig) {
+    private readonly EmailConfig _emailConfig;
+    public EmailService(EmailConfig emailConfig) {
       _emailConfig = emailConfig;
     }
 
@@ -53,7 +53,7 @@ namespace pfContactMe.Controllers {
 
       using(var emailClient = new SmtpClient())
       {
-        emailClient.Connect(Environment.GetEnvironmentVariable("SMTP_SERVER"), _emailConfig.SmtpPort, true);
+        emailClient.Connect(_emailConfig.SmtpServer, _emailConfig.SmtpPort, true);
         emailClient.AuthenticationMechanisms.Remove("XOAUTH2");
         emailClient.Authenticate(_emailConfig.SmtpUser, _emailConfig.SmtpPass);
         emailClient.Send(msg);
