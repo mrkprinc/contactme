@@ -33,9 +33,6 @@ namespace pfContactMe.Controllers {
 
   public class EmailService : IEmailService {
     private IDictionary _emailConfig;
-    public EmailService() {
-      _emailConfig = (IDictionary)Environment.GetEnvironmentVariables();
-    }
 
     public void Send(EmailMessage emailMessage) {
       var msg = new MimeMessage();
@@ -51,9 +48,9 @@ namespace pfContactMe.Controllers {
 
       using(var emailClient = new SmtpClient())
       {
-        emailClient.Connect(_emailConfig["SMTP_SERVER"], Convert.ToInt32(_emailConfig["SMTP_PORT"]), true);
+        emailClient.Connect(Environment.GetEnvironmentVariable("SMTP_SERVER"), Convert.ToInt32(Environment.GetEnvironmentVariable("SMTP_PORT")), true);
         emailClient.AuthenticationMechanisms.Remove("XOAUTH2");
-        // emailClient.Authenticate(_emailConfig, _emailConfig);
+        emailClient.Authenticate(Environment.GetEnvironmentVariable("SMTP_USER"), Environment.GetEnvironmentVariable("SMTP_PASS"));
         emailClient.Send(msg);
         emailClient.Disconnect(true);
       }
