@@ -10,11 +10,9 @@ namespace pfContactMe.Controllers {
   [Route("/api/[controller]")]
   [ApiController]
   public class MailController : ControllerBase {
-    private readonly IEmailConfig _emailConfig;
     private EmailService _emailService;
     public MailController() {
-      _emailConfig = new EmailConfig();
-      _emailService = new EmailService(_emailConfig);
+      _emailService = new EmailService();
     }
 
     [HttpPost]
@@ -34,9 +32,9 @@ namespace pfContactMe.Controllers {
   }
 
   public class EmailService : IEmailService {
-    private readonly IEmailConfig _emailConfig;
-    public EmailService(IEmailConfig emailConfig) {
-      _emailConfig = emailConfig;
+    private IDictionary<string, string> _emailConfig;
+    public EmailService() {
+      _emailConfig = (IDictionary<string, string>)Environment.GetEnvironmentVariables();
     }
 
     public void Send(EmailMessage emailMessage) {
@@ -53,33 +51,13 @@ namespace pfContactMe.Controllers {
 
       using(var emailClient = new SmtpClient())
       {
-        emailClient.Connect(_emailConfig.SmtpServer, _emailConfig.SmtpPort, true);
+        emailClient.Connect(_emailConfig["SMTP_SERVER"], Convert.ToInt32(_emailConfig["SMTP_PORT"]), true);
         emailClient.AuthenticationMechanisms.Remove("XOAUTH2");
-        emailClient.Authenticate(_emailConfig.SmtpUser, _emailConfig.SmtpPass);
+        // emailClient.Authenticate(_emailConfig, _emailConfig);
         emailClient.Send(msg);
         emailClient.Disconnect(true);
       }
     }
     
-  }
-
-  public interface IEmailConfig {
-    string SmtpServer { get; }
-    int SmtpPort { get; }
-    string SmtpUser { get; set; }
-    string SmtpPass { get; set; }
-  }
-
-  public class EmailConfig : IEmailConfig {
-    public EmailConfig() {
-        SmtpServer = Environment.GetEnvironmentVariable("STMP_SERVER");
-        SmtpPort = Convert.ToInt32(Environment.GetEnvironmentVariable("SMTP_PORT"));
-        SmtpUser = Environment.GetEnvironmentVariable("SMTP_USER");
-        SmtpPass = Environment.GetEnvironmentVariable("SMTP_PASS");
-    }
-    public string SmtpServer { get; set; }
-    public int SmtpPort { get; set; } 
-    public string SmtpUser { get; set; }
-    public string SmtpPass { get; set; }
   }
 }
