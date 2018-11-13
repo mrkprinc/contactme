@@ -18,12 +18,12 @@ namespace pfContactMe.Controllers {
     [HttpPost]
     public string SendMessage([FromBody] EmailMessage msg) {
       _emailService.Send(msg);
-      return "executed";
+      return "Email sent.";
     }
 
     [HttpGet]
     public string TestMe() {
-      return "api working";
+      return "API ready...";
     }
   }
 
@@ -32,8 +32,6 @@ namespace pfContactMe.Controllers {
   }
 
   public class EmailService : IEmailService {
-    private IDictionary _emailConfig;
-
     public void Send(EmailMessage emailMessage) {
       var msg = new MimeMessage();
       msg.To.Add(new MailboxAddress("me", "mark@markprince.ca"));
