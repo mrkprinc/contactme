@@ -32,26 +32,4 @@ namespace pfContactMe
             app.UseMvc();
         }
     }
-
-    public interface IEmailConfig {
-        string SmtpServer { get; }
-        int SmtpPort { get; }
-        string SmtpUser { get; set; }
-        string SmtpPass { get; set; }
-    }
-
-    public class EmailConfig : IEmailConfig {
-
-        public EmailConfig() {
-            SmtpServer = Environment.GetEnvironmentVariable("STMP_SERVER");
-            SmtpPort = Convert.ToInt32(Environment.GetEnvironmentVariable("SMTP_PORT"));
-            SmtpUser = Environment.GetEnvironmentVariable("SMTP_USER");
-            SmtpPass = Environment.GetEnvironmentVariable("SMTP_PASS");
-            Console.WriteLine(SmtpServer);
-        }
-        public string SmtpServer { get; set; }
-        public int SmtpPort { get; set; } 
-        public string SmtpUser { get; set; }
-        public string SmtpPass { get; set; }
-    }
 }
